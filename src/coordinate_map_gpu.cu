@@ -37,6 +37,10 @@
 #include <thrust/iterator/transform_iterator.h>
 #include <thrust/sort.h>
 
+// CUDA 12.1 compatibility
+#include <thrust/unique.h>
+#include <thrust/remove.h>
+
 namespace minkowski {
 
 namespace detail {

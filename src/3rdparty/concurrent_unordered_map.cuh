@@ -36,6 +36,9 @@
 #include <limits>
 #include <type_traits>
 
+// CUDA 12.1 compatibility
+#include <thrust/execution_policy.h>
+
 namespace {
 template <std::size_t N>
 struct packed {

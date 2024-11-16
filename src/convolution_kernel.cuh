@@ -33,6 +33,9 @@
 #include "math_functions.cuh"
 #include "types.hpp"
 
+// CUDA 12.1 compatibility
+#include <thrust/execution_policy.h>
+
 namespace minkowski {
 
 template <typename Dtype, typename Itype, typename ByteAllocator>
