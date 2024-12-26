@@ -195,7 +195,8 @@ if not (BLAS is False):  # False only when not set, str otherwise
     if not (BLAS_INCLUDE_DIRS is False):
         include_dirs += BLAS_INCLUDE_DIRS
     if not (BLAS_LIBRARY_DIRS is False):
-        extra_link_args += [f"-Wl,-rpath,{BLAS_LIBRARY_DIRS}"]
+        for library_dir in BLAS_LIBRARY_DIRS:
+            extra_link_args += [f"-L{library_dir}", f"-Wl,-rpath,{library_dir}"]
 else:
     # find the default BLAS library
     import numpy.distutils.system_info as sysinfo
@@ -313,6 +314,7 @@ ext_modules = [
         sources=[*[str(SRC_PATH / src_file) for src_file in SRC_FILES], *BIND_FILES],
         extra_compile_args={"cxx": CC_FLAGS, "nvcc": NVCC_FLAGS},
         libraries=libraries,
+        extra_link_args=extra_link_args
     ),
 ]
 
